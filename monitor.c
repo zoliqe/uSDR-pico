@@ -167,6 +167,12 @@ void mon_rx(void)
 	
 }
 
+void mon_fa(void) {
+	uint32_t f = atoi(argv[1]);
+	printf("fa=%u\n", f);
+	SI_SETFREQ(0, f);
+}
+
 /*
  * Command shell table, organize the command functions above
  */
@@ -178,7 +184,8 @@ shell_t shell[NCMD]=
 	{"fo", 2, &mon_fo, "fo (no parameters)", "Returns inter core fifo overruns"},
 	{"pt", 2, &mon_pt, "pt (no parameters)", "Toggles PTT status"},
 	{"bp", 2, &mon_bp, "bp {r|w} <value>", "Read or Write BPF relays"},
-	{"rx", 2, &mon_rx, "rx {r|w} <value>", "Read or Write RX relays"}
+	{"rx", 2, &mon_rx, "rx {r|w} <value>", "Read or Write RX relays"},
+	{"fa", 2, &mon_rx, "fa <value>", "Set frequency"}
 };
 
 
